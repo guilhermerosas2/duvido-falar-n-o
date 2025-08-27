@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #11519b, #740e6b);
+            padding: 10px;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .container h1 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #1600dd;
+        }
+
+        .container p {
+            font-size: 1em;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #nãoBtn {
+            background-color: #F44336;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #heartLoader {
+            display: none;
+            font-size: 1.3em;
+            color: #04428a;
+        }
+
+        #resultContainer {
+            display: none;
+            font-size: 1.3em;
+            color: #2f00b1;
+            margin-top: 20px;
+        }
+
+        /* Ajustes para telas menores */
+        @media (max-width: 768px) {
+            .container h1 {
+                font-size: 1.5em;
+            }
+
+            .button-container {
+                gap: 15px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 1.3em;
+            }
+
+            button {
+                font-size: 12px;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Vai me levar no cinema???</h1>
+        <div class="button-container">
+            <button id="simBtn">Sim</button>
+            <button id="nãoBtn">Não</button>
+        </div>
+        <div id="heartLoader">Carregando...</div>
+        <div id="resultContainer">🎉Ebaaa já estou me arrumando!🎉</div>
+    </div>
+
+    <script>
+        const nãoBtn = document.getElementById("nãoBtn");
+        const simBtn = document.getElementById("simBtn");
+        const heartLoader = document.getElementById("heartLoader");
+        const resultContainer = document.getElementById("resultContainer");
+
+        nãoBtn.addEventListener("mouseover", () => {
+            const newX = Math.random() * (window.innerWidth - nãoBtn.offsetWidth);
+            const newY = Math.random() * (window.innerHeight - nãoBtn.offsetHeight);
+
+            nãoBtn.style.position = "absolute";
+            nãoBtn.style.left = `${newX}px`;
+            nãoBtn.style.top = `${newY}px`;
+        });
+
+        simBtn.addEventListener("click", () => {
+            heartLoader.style.display = "block";
+
+            setTimeout(() => {
+                heartLoader.style.display = "none";
+                resultContainer.style.display = "block";
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
